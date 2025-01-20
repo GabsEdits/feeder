@@ -2,8 +2,11 @@ import { useEffect, useState } from "preact/hooks";
 
 export default function Home() {
   const [feeds, setFeeds] = useState(() => {
-    const savedFeeds = localStorage.getItem("feeds");
-    return savedFeeds ? JSON.parse(savedFeeds) : [];
+    if (typeof window !== "undefined") {
+      const savedFeeds = localStorage.getItem("feeds");
+      return savedFeeds ? JSON.parse(savedFeeds) : [];
+    }
+    return [];
   });
 
   const [articles, setArticles] = useState([]);
@@ -16,7 +19,9 @@ export default function Home() {
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem("feeds", JSON.stringify(feeds));
+    if (typeof window !== "undefined") {
+      localStorage.setItem("feeds", JSON.stringify(feeds));
+    }
   }, [feeds]);
 
   const addFeed = async () => {
