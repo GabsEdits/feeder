@@ -1,0 +1,137 @@
+@import "https://cdn.jsdelivr.net/npm/non.geist@1.0.4/font-faces/sans-var.css";
+@import "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Geist Variable";
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  @apply bg-zinc-950 text-zinc-50;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  height: 100%;
+}
+
+h1 {
+  line-height: 1.1;
+}
+
+#app {
+  margin: 0 auto;
+  width: 50%;
+  height: 100%;
+}
+
+@media (max-width: 800px) {
+  #app {
+    width: 90%;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    @apply bg-zinc-50 text-zinc-950;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+#content b {
+  @apply font-bold;
+}
+
+#content i {
+  @apply italic;
+}
+
+#content code {
+  @apply font-mono bg-zinc-900 text-zinc-50 px-1;
+}
+
+#content pre {
+  @apply font-mono bg-zinc-900 text-zinc-50 p-4;
+}
+
+#content h2 {
+  @apply text-2xl font-bold mt-8 mb-4;
+}
+
+#content h3 {
+  @apply text-xl font-bold mt-6 mb-3;
+}
+
+#content h4 {
+  @apply text-lg font-bold mt-4 mb-2;
+}
+
+#content p {
+  @apply mt-4;
+}
+
+#content li {
+  @apply list-disc;
+}
+
+#content ul {
+  @apply mt-4 ps-4;
+}
+
+#content ol {
+  @apply mt-4;
+}
+
+#content img {
+  @apply mx-auto my-4 rounded-xl;
+}
+
+#content table {
+  @apply w-full border-collapse;
+}
+
+#content th {
+  @apply bg-zinc-900 text-zinc-50 font-bold p-2;
+}
+
+#content td {
+  @apply bg-zinc-800 text-zinc-50 p-2;
+}
+
+#content blockquote {
+  @apply border-l-4 border-zinc-900 pl-4 italic;
+}
+
+#content hr {
+  @apply my-8 border-t border-zinc-900;
+}
+
+#content a {
+  @apply text-blue-500 underline;
+}
