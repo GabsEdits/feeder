@@ -3,13 +3,18 @@ import { useEffect, useState } from "preact/hooks";
 export default function Welcome() {
   const [loading, setLoading] = useState(false);
   const [loadingText, setLoadingText] = useState("Loading the posts");
-  const [feedUrl, setFeedUrl] = useState(localStorage.getItem("feedUrl") || "");
+  const [feedUrl, setFeedUrl] = useState("");
   const [showHome, setShowHome] = useState(false);
 
   useEffect(() => {
-    const feeds = JSON.parse(localStorage.getItem("feeds") || "[]");
-    if (feeds.length > 0) {
-      globalThis.location.href = "/dash";
+    if (typeof window !== "undefined") {
+      const storedFeedUrl = localStorage.getItem("feedUrl") || "";
+      setFeedUrl(storedFeedUrl);
+
+      const feeds = JSON.parse(localStorage.getItem("feeds") || "[]");
+      if (feeds.length > 0) {
+        globalThis.location.href = "/dash";
+      }
     }
   }, []);
 
@@ -40,10 +45,13 @@ export default function Welcome() {
 
           const { title, icon } = data.feedInfo;
 
-          const feeds = JSON.parse(localStorage.getItem("feeds") || "[]");
-          feeds.push({ title, url: feedUrl, icon });
-          localStorage.setItem("feeds", JSON.stringify(feeds));
-          localStorage.setItem("feedUrl", feedUrl);
+          if (typeof window !== "undefined") {
+            const feeds = JSON.parse(localStorage.getItem("feeds") || "[]");
+            feeds.push({ title, url: feedUrl, icon });
+            localStorage.setItem("feeds", JSON.stringify(feeds));
+            localStorage.setItem("feedUrl", feedUrl);
+          }
+
           setShowHome(true);
           globalThis.location.href = "/dash";
         } catch (_error) {
